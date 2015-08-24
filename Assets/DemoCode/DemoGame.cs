@@ -13,7 +13,7 @@ using UnityEngine;
 
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using System.Collections.Generic;
-using SPServer;
+using SPShared.Operations;
 
 public class DemoGame : LoadBalancingClient
 {
@@ -39,11 +39,11 @@ public class DemoGame : LoadBalancingClient
 	public void OpUpdateFlightControls()
 	{
 		Dictionary<byte, object> opParameters = new Dictionary<byte, object>();
-		opParameters[(byte)SPServer.Operations.SPParameterCode.MoveRight] = false;
-		opParameters [(byte)SPServer.Operations.SPParameterCode.MoveLeft] = true; // MoveLeft
-		opParameters[(byte)SPServer.Operations.SPParameterCode.MoveForward] = true; // MoveForward
-		opParameters [(byte)SPServer.Operations.SPParameterCode.MoveBackward] = false; // MoveBackward
-		this.loadBalancingPeer.OpCustom((byte)SPServer.Operations.SPOperationCode.UpdateFlightControls, opParameters, true);
+		opParameters[(byte)SPShared.Operations.SPParameterCode.MoveRight] = false;
+		opParameters [(byte)SPShared.Operations.SPParameterCode.MoveLeft] = true; // MoveLeft
+		opParameters[(byte)SPShared.Operations.SPParameterCode.MoveForward] = true; // MoveForward
+		opParameters [(byte)SPShared.Operations.SPParameterCode.MoveBackward] = false; // MoveBackward
+		this.loadBalancingPeer.OpCustom((byte)SPShared.Operations.SPOperationCode.UpdateFlightControls, opParameters, true);
 	}
 
     public override void OnOperationResponse(OperationResponse operationResponse)
@@ -86,7 +86,7 @@ public class DemoGame : LoadBalancingClient
                     this.OpCreateRoom(null, new RoomOptions() { MaxPlayers = 2 }, null);
                 }
                 break;
-			case (byte) SPServer.Operations.SPOperationCode.UpdateFlightControls:
+			case (byte) SPShared.Operations.SPOperationCode.UpdateFlightControls:
 				Debug.Log ("Got Update response!");
 			break;
 
@@ -104,8 +104,8 @@ public class DemoGame : LoadBalancingClient
                 var data = photonEvent.Parameters[ParameterCode.Properties] as Hashtable;
                 DebugReturn(DebugLevel.ALL, "Got EV PropertiesChanged: " + (data["data"] as string));
                 break;
-			case (byte)SPServer.Operations.SPOperationCode.Join:
-				var actorNum = photonEvent.Parameters[(byte)SPServer.Operations.SPParameterCode.ActorNr];
+			case (byte)SPShared.Operations.SPOperationCode.Join:
+				var actorNum = photonEvent.Parameters[(byte)SPShared.Operations.SPParameterCode.ActorNr];
 				DebugReturn(DebugLevel.ALL, "Actor: " + actorNum + " joined the game");
 				break;
         }
