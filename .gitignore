@@ -2,3 +2,5 @@
 /Library
 /Assets/Library/SPShared/*
 /Bin
+*.csproj
+*.sln
