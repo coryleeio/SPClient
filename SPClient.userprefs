@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\DemoCode\DemoPlayer.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\PhysicsTest\ECSTest.cs">
     <Files>
-      <File FileName="Assets\DemoCode\DemoGame.cs" Line="108" Column="5" />
-      <File FileName="Assets\DemoCode\DemoPlayer.cs" Line="17" Column="1" />
+      <File FileName="Assets\PhysicsTest\ECSTest.cs" Line="17" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
